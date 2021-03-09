@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.html">Project Explorer</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="createproject.html">Submit</a>
+                  </li>
+                  <li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search Projects" aria-label="Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                  </li>
+                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link order-2" href="login.html">Login</a>
+                    <a class="nav-link order-1" href="register.html">Sign up</a>
+
+                </div>
+                
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <h3>Project 1</h3> 
+            <div class="container">
+                <div class="row bg-light p-3 mb-5">
+                    <div class="col">
+                        <p>Created By <br>Muili Bolaji</p>
+                    </div>
+                    
+                    <div class="col">
+                        <p>Date Created<br>25/02/2021</p>
+                    </div>
+                    <div class="col">
+                        <p>Last Updated<br>25/02/2021</p>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary">
+                            Edit Project
+                        </button>
+                    </div>
+                </div>
+            </div> 
+            
+           
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h4>Project Abstract</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas sed tempus.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas sed tempus.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas sed tempusLorem ipsum dolor sit amet, 
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas sed tempus.</p>
+                        <div class="form-group">
+                            <label for="abstract">Comments</label>
+                            <textarea class="form-control" name="comments" id="abstract" cols="" rows="4px" placeholder="no comments"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="center text-center">
+                            <p>no comments yet</p>
+                        </div>   
+                    </div>
+                    <div class="col">
+                        <h3>Project Details</h3>
+                        <hr>
+                        <div class="card">
+                            <div class="card-header">Author(s)</div>
+                            <div class="card-body">
+                                <p class="card-text">Muili Bolaji</p>
+                               
+                            </div>
+                            <div class="card-footer text-primary">#web</div>
+                        </div>
+                        
+                        <hr>
+                        <div class="card">
+                            <div class="card-header">Project files</div>
+                            <div class="card-body">
+                                <p class="card-text text-center">No files uploaded yet</p>
+                               
+                            </div>
+                        </div>
+    
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        
+        <footer class="bg-light text-right m-3 p-2"> Project Explorer &#169 2021<a href="www.edconnect.ng"> Edconnect</a></footer>
+       
+    </body>
+</html>

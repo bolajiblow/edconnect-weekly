@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.html">Project Explorer</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="createproject.html">Submit</a>
+                  </li>
+                  <li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search Projects" aria-label="Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                  </li>
+                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link order-2" href="login.html">Login</a>
+                    <a class="nav-link order-1" href="register.html">Sign up</a>
+
+                </div>
+                
+            </div>
+        </nav>
+        <form class="mx-auto w-75 mt-5">
+            <div class="form-group">
+                <h2>Signup</h2>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="firstName" class="form-control" id="firstName">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="lastName" class="form-control" id="lastName">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="Your Email Address">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Your password">
+                </div>
+            </div>    
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="matricNumber">Matric Number:</label>
+                <input type="text" name="matricNumber" class="form-control" id="matricNumber">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="program">Program</label>
+                <select class="form-control" id="program">
+                    <option selected value="computer_science">Computer Science</option>
+                    <option value="computer_information_systems">Computer Information Systems</option>
+                    <option value="computer_technology">Computer Technology</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="graduationYear">Graduation Year</label>
+                <select class="form-control" id="graduationYear">
+                    <option selected value="2013" >2013</option>
+                    <option value="2014" >2014</option>
+                    <option value="2015" >2015</option>
+                    <option value="2016" >2016</option>
+                    <option value="2017" >2017</option>
+                    <option value="2018" >2018</option>
+                    <option value="2019" >2019</option>
+                    <option value="2020" >2020</option>
+
+                </select>
+              </div>
+            </div>
+            
+        </form>
+        <footer class="bg-light text-right m-5 p-2"> Project Explorer &#169 2021<a href="www.edconnect.ng"> Edconnect</a></footer>
+        
+           
+        </main>
+    </body>
+</html>
