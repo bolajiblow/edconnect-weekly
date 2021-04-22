@@ -9,6 +9,15 @@ class DataModel {
     }
 
     getById(id) {
+        for (let i=0; i<this.data.length; i++){
+            let getUser = this.data[i];
+            if(getUser.id == id){
+                return getUser;
+            }else {
+                return null;
+            }
+            }
+            }
 
     }
 
@@ -21,10 +30,33 @@ class DataModel {
     }
 
     update(obj, id) {
+        addUser(obj,id) {
+            let isUpdated = false;
+            this.data.forEach(ob => {
+               if(ob.id==id){
+                Object.keys(ob).forEach(key => {
+                    ob[key] = obj[key]
+               })
+               isUpdated = true
+               }
+               
+               })
+               return isUpdated
+        }
 
     }
 
     delete(id) {
+        for (let i=0; i<this.data.length; i++){
+            let deleteUser = this.data[i];
+            if(deleteUser.id == id){
+                this.data.splice(i,1);
+                return true;
+            }else {
+                return false;
+            }
+            }
+            }
 
     }
 
