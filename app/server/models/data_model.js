@@ -17,7 +17,7 @@ class DataModel {
                 return null;
             }
             }
-            }
+
 
     }
 
@@ -29,8 +29,8 @@ class DataModel {
         return false;
     }
 
-    update(obj, id) {
-        addUser(obj,id) {
+    
+    update(obj,id) {
             let isUpdated = false;
             this.data.forEach(ob => {
                if(ob.id==id){
@@ -38,12 +38,9 @@ class DataModel {
                     ob[key] = obj[key]
                })
                isUpdated = true
-               }
-               
+               }   
                })
-               return isUpdated
-        }
-
+            return isUpdated
     }
 
     delete(id) {
@@ -55,9 +52,8 @@ class DataModel {
             }else {
                 return false;
             }
-            }
-            }
-
+        }
+        
     }
 
     // this method will be overriden in the sub classes

@@ -47,37 +47,44 @@ class Users extends DataModel {
     validate(obj) {
         this.errors = [];
         let message = '';
+        let empty, userMail, userMatric, passs = false;
         //test for empty property
        Object.keys(obj).forEach(key => {
             if(obj[key] == ''){
+                empty = true;
                 message = (`${key} cannot be empty`)
                 this.errors.push(message)
             } 
-            })
-        }
+        });
+        
         //test for the same email
         this.data.forEach((ob) => {
              if (ob.email == obj.email) {
+                 userMail =  true;
                 message = (`A user with ${obj.email} already exists`)
                 this.errors.push(message)
             }
         });
         
         //test for matricNumber
-        this.data.forEach((ob) => {
+        this.data.forEach(ob => {
             if(ob.matricNumber == obj.matricNumber){
-                message = (`A user with ${obj.matricNumber} already exists`);
-                this.errors.push(message)            }
+                userMatric = true;
+                message = (`A user with ${obj.matricNumber} already exists`)
+                this.errors.push(message)
             }
         });
-        
+    
         //test for password
         if (obj.matricNumber.length < 7) {
+            passs = true
             message =  'Password should have atleast 7 characters'
             this.errors.push(message);
-        })
+        }
+    
+        
     }
-
+}
 // Do not worry about the below for now; It is included so that we can test your code
 // We will cover module exports in later parts of this course
 module.exports = {
