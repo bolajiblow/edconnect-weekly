@@ -20,7 +20,7 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-        let authenticateUser = this.data.filter((ob) => {return (ob.email === email && ob.password === password)})
+        let authenticateUser = this.data.find((ob) => ob.email === email && ob.password === password)
         return (authenticateUser? true : false);
         
 
@@ -28,13 +28,13 @@ class Users extends DataModel {
     }
 
     getByEmail(email) {
-        let getUserbyMail = this.data.filter((ob) => {return (ob.email === email)})
+        let getUserbyMail = this.data.filter((ob) =>  ob.email === email)
             return getUserbyMail? getUserbyMail : null
 
     }
 
     getByMatricNumber(matricNumber) {
-        let getUserbyMatric = this.data.filter((ob) => {return (ob.matricNumber === matricNumber)})
+        let getUserbyMatric = this.data.filter((ob) => ob.matricNumber === matricNumber)
             return getUserbyMatric? getUserbyMatric : null
 
     }
