@@ -13,7 +13,6 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        this.errors = [];
         let message = '';
         let arrayAuthor, arrayTag, isEmpty = false;
         //test for author
@@ -32,7 +31,7 @@ class Projects extends DataModel {
         } 
         // check for empty property
         Object.keys(obj).forEach(key => {
-            if(!obj[key] || obj[key] === null){
+            if(obj[key] == ''){
                 isEmpty = true;
                 message = (`${key} cannot be empty`)
                 this.errors.push(message)
