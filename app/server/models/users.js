@@ -45,7 +45,7 @@ class Users extends DataModel {
         let empty, userMail, userMatric, passs = false;
         //test for empty property
        Object.keys(obj).forEach(key => {
-            if(obj[key] == ''){
+            if(obj[key] == null){
                 empty = true;
                 message = (`${key} cannot be empty`)
                 this.errors.push(message)
