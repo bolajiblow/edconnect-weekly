@@ -13,7 +13,6 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        this.errors = [];
         //Check if Authors is array
         let checkAuthor = Array.isArray(obj.authors)
         checkAuthor ? true : this.errors.push("Authors should be an array")
@@ -22,13 +21,15 @@ class Projects extends DataModel {
         checkTags ? true : this.errors.push("Tags should be an array")
         //Check for empty values
         let value = true;
-        Object.keys(obj).forEach(key => {
-            if(!obj[key] || obj[key] === null || obj[key] === undefined || obj[key] === ""){
+        for (const key in obj) {
+            if (!obj[key] || obj[key] === null || obj[key] === undefined || obj[key] === "") {
                 value = false;
-                this.errors.push(`${key} should not be empty`)
-            } 
-        });
+                this.errors.push("should not be empty")
+                break;
+            }
+        }
         return (checkAuthor && checkTags && value) ? true : false
+            
     }
 }
 
