@@ -13,35 +13,18 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-        let message = '';
-        let arrayAuthor, arrayTag, isEmpty = false;
-        //test for author
-        
-        if (Array.isArray(obj.authors) == false) {
-            arrayAuthor = true;
-            message = 'Authors should be an array'
-            this.errors.push(message)            
-        } 
-
-        //test for tag
-        if (Array.isArray(obj.tags) == false) {
-            arrayTag = true;
-            message = 'Tags should be an array'
-            this.errors.push(message)            
-        } 
-        // check for empty property
-        Object.keys(obj).forEach(key => {
-            if(obj[key] == ''){
-                isEmpty = true;
-                message = (`${key} cannot be empty`)
-                this.errors.push(message)
-            } 
-        })
-        if (arrayAuthor || arrayTag || isEmpty) {
-            return false
-        }else{
+        let sta1 = true;
+        for (const item in obj) {
+            if (!obj[item] || obj[item] === null) {
+                sta1 = false;
+            }
+        }
+        let arrayAuthors = Array.isArray(obj.authors);
+        let arrayTags = Array.isArray(obj.tags);
+        if (arrayAuthors && arrayTags && sta1) {
             return true
         }
+        return false;
         
     }
 
