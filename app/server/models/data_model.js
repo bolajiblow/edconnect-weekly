@@ -9,14 +9,12 @@ class DataModel {
     }
 
     getById(id) {
-        for (let i=0; i<this.data.length; i++){
-            let getUser = this.data[i];
-            if(getUser.id == id){
-                return getUser;
-            }else {
-                return null;
-            }
-            }
+        let getId = this.data.find(ob => ob.id === id)
+        if (!getId) {
+            return null
+        } else{
+            return getId
+        }
 
 
     }
