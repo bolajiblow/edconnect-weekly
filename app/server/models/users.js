@@ -2,7 +2,7 @@ const DataModel = require('./data_model');
 
 class User {
     constructor(id, firstname, lastname, email, password, matricNumber, program, graduationYear) {
-        this.id;
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -20,27 +20,27 @@ class User {
 
 class Users extends DataModel {
     authenticate(email, password) {
-        let authenticateUser = this.data.filter((object) => {return (object.email === email && object.password === password)})
+        let authenticateUser = this.data.filter((ob) => {return (ob.email === email && ob.password === password)})
         return authenticateUser.length != 0;
 
 
     }
 
     getByEmail(email) {
-        let getUserbyMail = this.data.filter((object) => {return (object.email === email)})
-    if(getUserbyMail.length != 0){
-    return getUserbyMail
-    }
-    return null;
+        let getUserbyMail = this.data.filter((ob) => {return (ob.email === email)})
+            if(getUserbyMail.length != 0){
+                return getUserbyMail
+            }
+        return null;
 
     }
 
     getByMatricNumber(matricNumber) {
-        let getUserbyMatric = this.data.filter((object) => {return (object.matricNumber === matricNumber)})
-    if(getUserbyMatric.length != 0){
-    return getUserbyMatric
-    }
-    return null;
+        let getUserbyMatric = this.data.filter((ob) => {return (ob.matricNumber === matricNumber)})
+            if(getUserbyMatric.length != 0){
+                return getUserbyMatric
+            }
+        return null;
 
     }
 

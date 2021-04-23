@@ -14,10 +14,19 @@ class Project {
 class Projects extends DataModel {
     validate(obj) {
         this.errors = [];
+        let message = '';
         //test for author
-        let authorCheck = Array.isArray(obj.authors) ? true: this.errors.push('Authors should be an array');
+        
+        if (Array.isArray(obj.authors) == false) {
+            message = 'Authors should be an array'
+            this.errors.push(message)            
+        } 
+
         //test for tag
-        let tagCheck = Array.isArray(obj.tags) ? true: this.errors.push('Tags should be an array');
+        if (Array.isArray(obj.tags) == false) {
+            message = 'Tags should be an array'
+            this.errors.push(message)            
+        } 
         // check for empty property
         Object.keys(obj).forEach(key => {
             if(obj[key] == ''){
