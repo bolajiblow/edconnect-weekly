@@ -76,7 +76,7 @@ class Users extends DataModel {
             message =  'Password should have at least 7 characters'
             this.errors.push(message);
         }
-        if (empty || userMail || userMatric || !passs) {
+        if (empty || userMail || userMatric || passs) {
             return false
         } else {
             return true
