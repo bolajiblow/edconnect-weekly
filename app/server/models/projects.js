@@ -32,13 +32,19 @@ class Projects extends DataModel {
         } 
         // check for empty property
         Object.keys(obj).forEach(key => {
-            if(obj[key] == ''){
+            if(obj[key] == '' || !obj[key]){
                 isEmpty = true;
                 message = (`${key} cannot be empty`)
                 this.errors.push(message)
             } 
-            })
+        })
+        if (arrayAuthor || arrayTag || isEmpty) {
+            return false
+        }else{
+            return true
         }
+        
+    }
 
         
        

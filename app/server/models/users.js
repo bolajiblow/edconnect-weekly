@@ -21,11 +21,7 @@ class User {
 class Users extends DataModel {
     authenticate(email, password) {
         let authenticateUser = this.data.filter((ob) => {return (ob.email === email && ob.password === password)})
-        if (authenticateUser != 0) {
-            return true
-        } else{
-            return false
-        }
+        return (authenticateUser? true : false);
         
 
 
@@ -33,19 +29,13 @@ class Users extends DataModel {
 
     getByEmail(email) {
         let getUserbyMail = this.data.filter((ob) => {return (ob.email === email)})
-            if(getUserbyMail.length != 0){
-                return getUserbyMail
-            }
-        return null;
+            return getUserbyMail? getUserbyMail : null
 
     }
 
     getByMatricNumber(matricNumber) {
         let getUserbyMatric = this.data.filter((ob) => {return (ob.matricNumber === matricNumber)})
-            if(getUserbyMatric.length != 0){
-                return getUserbyMatric
-            }
-        return null;
+            return getUserbyMatric? getUserbyMatric : null
 
     }
 
@@ -85,6 +75,11 @@ class Users extends DataModel {
             passs = true
             message =  'Password should have atleast 7 characters'
             this.errors.push(message);
+        }
+        if (empty || userMail || userMatric || passs) {
+            return false
+        } else {
+            return true
         }
     
         
