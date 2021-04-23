@@ -21,7 +21,12 @@ class User {
 class Users extends DataModel {
     authenticate(email, password) {
         let authenticateUser = this.data.filter((ob) => {return (ob.email === email && ob.password === password)})
-        return authenticateUser.length != 0;
+        if (authenticateUser != 0) {
+            return true
+        } else{
+            return false
+        }
+        
 
 
     }
