@@ -71,7 +71,7 @@ class Users extends DataModel {
         });
     
         //test for password
-        if (obj.matricNumber.length < 7) {
+        if (obj.password.length < 7) {
             passs = true
             message =  'Password should have at least 7 characters'
             this.errors.push(message);
