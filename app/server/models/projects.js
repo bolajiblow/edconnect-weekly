@@ -2,37 +2,47 @@ const DataModel = require('./data_model');
 
 class Project {
     constructor(id, name, abstract, authors, tags, createdBy) {
-        this.id = id
-        this.name = name
-        this.abstract = abstract
-        this.authors = authors
-        this.tags = tags
-        this.createdBy = createdBy
+        this.id = id;
+        this.name = name;
+        this.abstract = abstract;
+        this.authors = authors;
+        this.tags = tags;
+        this.createdBy = createdBy;
     }
 }
 
 class Projects extends DataModel {
     validate(obj) {
-        //Check if Authors is array
-        let checkAuthor = Array.isArray(obj.authors)
-        checkAuthor ? true : this.errors.push("Authors should be an array")
+        this.errors = [];
+        let message = '';
+        let arrayAuthor, arrayTag, isEmpty = false;
+        //test for author
+        
+        if (!Array.isArray(obj.authors)) {
+            arrayAuthor = true;
+            message = 'Authors should be an array'
+            this.errors.push(message)            
+        } 
 
-        //Check if Tag is array
-        let checkTags = Array.isArray(obj.tags)
-        checkTags ? true : this.errors.push("Tags should be an array")
-
-        //Check for empty values
-        let value = true;
-        for (const key in obj) {
-            if (!obj[key] || obj[key] === null || obj[key] === undefined || obj[key] === "") {
-                value = false;
-                
-                this.errors.push(key + " should not be empty")
-                break;
-            }
+        //test for tag
+        if (!Array.isArray(obj.tags)) {
+            arrayTag = true;
+            message = 'Tags should be an array'
+            this.errors.push(message)            
+        } 
+        // check for empty property
+        Object.keys(obj).forEach(key => {
+            if(obj[key] == ''){
+                isEmpty = true;
+                message = (`${key} cannot be empty`)
+                this.errors.push(message)
+            } 
+        })
+        if (arrayAuthor || arrayTag || isEmpty) {
+            return false
+        }else{
+            return true
         }
-      
-        return (checkAuthor && checkTags && value) ? true : false
     }
 }
 
