@@ -29,28 +29,25 @@ class DataModel {
 
     
     update(obj,id) {
-            let isUpdated = false;
-            this.data.forEach(ob => {
-               if(ob.id==id){
-                Object.keys(ob).forEach(key => {
-                    ob[key] = obj[key]
-               })
-               isUpdated = true
-               }   
-               })
-            return isUpdated
+        let user = this.data.find(item => item.id === id);
+        if (user) {
+            for (const item in obj) {
+                user[item] = obj[item];
+            }
+            return true;
+        }
+        return false;
     }
 
     delete(id) {
-        for (let i=0; i<this.data.length; i++){
-            let deleteUser = this.data[i];
-            if(deleteUser.id == id){
-                this.data.splice(i,1);
-                return true;
-            }else {
-                return false;
-            }
+        let user = this.data.find(item => item.id === id);
+
+        let index = this.data.indexOf(user);
+        if (user) {
+            this.data.splice(index, 1);
+            return true;
         }
+        return false;
         
     }
 

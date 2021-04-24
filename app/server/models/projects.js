@@ -18,21 +18,21 @@ class Projects extends DataModel {
         let arrayAuthor, arrayTag, isEmpty = false;
         //test for author
         
-        if (!Array.isArray(obj.authors)) {
+        if (Array.isArray(obj.authors) === false) {
             arrayAuthor = true;
             message = 'Authors should be an array'
             this.errors.push(message)            
         } 
 
         //test for tag
-        if (!Array.isArray(obj.tags)) {
+        if (Array.isArray(obj.tags) === false) {
             arrayTag = true;
             message = 'Tags should be an array'
             this.errors.push(message)            
         } 
         // check for empty property
         Object.keys(obj).forEach(key => {
-            if(obj[key] == ''){
+            if(obj[key] === '' || obj[key] === null || obj[key] === undefined || !obj[key]){
                 isEmpty = true;
                 message = (`${key} cannot be empty`)
                 this.errors.push(message)
