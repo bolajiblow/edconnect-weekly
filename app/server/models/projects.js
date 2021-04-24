@@ -2,12 +2,12 @@ const DataModel = require('./data_model');
 
 class Project {
     constructor(id, name, abstract, authors, tags, createdBy) {
-        this.id = id;
-        this.name = name;
-        this.abstract = abstract;
-        this.authors = authors;
-        this.tags = tags;
-        this.createdBy = createdBy;
+        this.id = id
+        this.name = name
+        this.abstract = abstract
+        this.authors = authors
+        this.tags = tags
+        this.createdBy = createdBy
     }
 }
 
@@ -16,20 +16,23 @@ class Projects extends DataModel {
         //Check if Authors is array
         let checkAuthor = Array.isArray(obj.authors)
         checkAuthor ? true : this.errors.push("Authors should be an array")
+
         //Check if Tag is array
         let checkTags = Array.isArray(obj.tags)
         checkTags ? true : this.errors.push("Tags should be an array")
+
         //Check for empty values
         let value = true;
         for (const key in obj) {
             if (!obj[key] || obj[key] === null || obj[key] === undefined || obj[key] === "") {
                 value = false;
-                this.errors.push("should not be empty")
+                
+                this.errors.push(key + " should not be empty")
                 break;
             }
         }
+      
         return (checkAuthor && checkTags && value) ? true : false
-            
     }
 }
 

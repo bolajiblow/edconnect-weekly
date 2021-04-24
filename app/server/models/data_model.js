@@ -9,14 +9,13 @@ class DataModel {
     }
 
     getById(id) {
-        let getId = this.data.find(ob => ob.id === id)
-        if (!getId) {
-            return null
-        } else{
-            return getId
+        for (let index = 0; index < this.data.length; index++){
+            const item = this.data[index];
+            if (id === item.id){
+                return item;
+            }
         }
-
-
+                return null;
     }
 
     save(obj) {
@@ -27,31 +26,32 @@ class DataModel {
         return false;
     }
 
-    
-    update(obj,id) {
-            let isUpdated = false;
-            this.data.forEach(ob => {
-               if(ob.id==id){
-                Object.keys(ob).forEach(key => {
-                    ob[key] = obj[key]
-               })
-               isUpdated = true
-               }   
-               })
-            return isUpdated
+    update(obj, id) {
+        for (let index = 0; index < this.data.length; index++){
+            const item = this.data[index];
+            if (item.id === id){
+                for (const key in obj) {
+                    if (Object.hasOwnProperty.call(obj, key)) {
+                        const item = obj[key];
+                        this.data[index][key] = item
+                        
+                    }
+                }
+                    return true;
+            }
+        }
+                    return false;
     }
 
     delete(id) {
-        for (let i=0; i<this.data.length; i++){
-            let deleteUser = this.data[i];
-            if(deleteUser.id == id){
-                this.data.splice(i,1);
+        for (let index = 0; index < this.data.length; index++){
+            const item = this.data[index]
+            if (item.id === id){
+                this.data.splice(index, 1)
                 return true;
-            }else {
-                return false;
             }
         }
-        
+                return false;
     }
 
     // this method will be overriden in the sub classes
