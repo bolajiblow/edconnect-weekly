@@ -33,7 +33,7 @@ const Project = () => {
                     )
         }
         )
-    }, id)
+    }, [id])
 
     return (
         <Layout>

@@ -27,6 +27,8 @@ const CreateProject = (props) => {
             case 'tags':
                 setTags(value)
                 break;
+            default:
+                //do nothing
         }
     }
 

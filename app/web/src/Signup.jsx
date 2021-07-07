@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
-import Layout from './shared/layout';
+import Layout from './shared/Layout';
 import { useHistory } from 'react-router-dom';
 
 const Signup = (props) => {
@@ -32,7 +32,7 @@ const Signup = (props) => {
     },[])
 
     const handleInputChange = (event) => {
-        const {name,value} = event.target
+        const {name,value} = event.target;
         switch (name) {
             case 'firstName':
                 setFirstName(value)
@@ -54,6 +54,9 @@ const Signup = (props) => {
                 break;
             case 'program':
                 setProgramName(value)
+                break;
+            default:
+                //do nothing
         }
 
     }
@@ -69,25 +72,27 @@ const Signup = (props) => {
             program : programName,
             graduationYear : graduateYear,
         }
+
+        fetch("/api/register", {
+            method: 'POST',
+            body: JSON.stringify(regInfo),
+            headers: {
+                   'Content-Type': 'application/json',
+            },
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                document.cookie = `uid=${res.data.id}; path=/ `; // I am to store the id in a cookie named uid.
+                history.push("/"); // redirect user to home page
+            } else if (res.status !== "ok") {
+                setAlertBlock(true);
+                setAlerts(res.errors); // Supposed to print error message.
+            }
+        })
     }
 
-    fetch("/api/register", {
-        method: 'POST',
-        body: JSON.stringify(regInfo),
-        headers: {
-               'Content-Type': 'application/json',
-        },
-    })
-    .then(res => res.json())
-    .then(res => {
-        if (res.status === "ok") {
-            document.cookie = `uid=${res.data.id}; path=/ `; // I am to store the id in a cookie named uid.
-            history.push("/"); // redirect user to home page
-        } else if (res.status !== "ok") {
-            setAlertBlock(true);
-            setAlerts(res.errors); // Supposed to print error message.
-        }
-    })
+    
 
 
     return(
@@ -122,21 +127,21 @@ const Signup = (props) => {
                     </Form.Group>    
                     <Form.Group>
                         <Col>
-                            <Form.Label for="matricNumber">Matric Number:</Form.Label>
-                            <Form.Control type="text" name="matricNumber" className="Form-control" value={matricNumber} onChange={handleInputChange} id="matricNumber"/>
+                            <Form.Label for="program">Program</Form.Label>
+                            <Form.Control as="select" id="program" name="program" value={programName} onChange={handleInputChange}>
+                                <option>Select Program</option>
+                                {programs.map(program =><option key={program}>{program}</option>)}
+                            </Form.Control>
                         </Col>
                         <Col>
-                            <Form.Label for="program">Program</Form.Label>
-                            <Form.Control as="select" id="program" name="program">
-                                <option>Select Program</option>
-                                {programs.map(program =><option>{program}</option>)}
-                            </Form.Control>
+                            <Form.Label for="matricNumber">Matric Number:</Form.Label>
+                            <Form.Control type="text" name="matricNumber" className="Form-control" value={matricNumber} onChange={handleInputChange} id="matricNumber"/>
                         </Col>
                         <Col >
                             <Form.Label for="graduationYear">Graduation Year</Form.Label>
                             <Form.Control as="select" id="graduationYear" name="graduationYear" value={graduateYear} onChange={handleInputChange}>
                                 <option> Select Graduation Year</option>
-                                {gradYears.map((gradYear) => <option>{gradYear}</option>)}
+                                {gradYears.map((gradYear) => <option key={gradYear}>{gradYear}</option>)}
                             </Form.Control>
                         </Col>
                     </Form.Group>

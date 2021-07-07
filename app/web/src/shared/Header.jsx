@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import { Navbar, Nav, FormLabel, FormControl, Button, Form } from 'react-bootstrap';
 
 const Header = () => {
@@ -47,17 +48,17 @@ const Header = () => {
                         <Button type="submit" variant="outline-light">Search</Button>
                 </Form>
                 <Nav className="mr-auto">
-                    <Nav.link href="/projects/submit">Projects</Nav.link>
+                    <Nav.Link href="/projects/submit">Projects</Nav.Link>
                 </Nav>
                 <Nav>
                     {biscuit ? (
                     <>
-                        <Nav.link href="#" id="logout">Logout</Nav.link>
+                        <Nav.Link href="#" id="logout" onClick={HandleLogout}>Logout</Nav.Link>
                         <Navbar.Text id="username">{username}</Navbar.Text>
                     </>) :
                     (<>
-                        <Nav.link href="/signup" id="login">Sign Up</Nav.link>
-                        <Nav.link href="/login" id="login">Login</Nav.link>
+                        <Nav.Link href="/signup" id="login">Sign Up</Nav.Link>
+                        <Nav.Link href="/login" id="login">Login</Nav.Link>
                     </>)}
                 </Nav>
                

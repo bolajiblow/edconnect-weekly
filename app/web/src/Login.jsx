@@ -12,7 +12,7 @@ const Login = (props) => {
 
 
     const handleInputChange = event => {
-      const {name, value} = event.target
+      const {name, value} = event.target;
       switch (name) {
           case 'email':
               setEmail(value)
@@ -20,6 +20,8 @@ const Login = (props) => {
           case 'password':
               setPassword(value)
               break;
+            default:
+                //do nothing
       }
     }
 
@@ -29,8 +31,6 @@ const Login = (props) => {
           email : email,
           password : password
       }
-
-      const loginAlert = document.getElementById("login-alert");
 
       fetch('/api/login', {
           method: 'POST',

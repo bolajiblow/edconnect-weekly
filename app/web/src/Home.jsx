@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { Button, Jumbotron, Card, Row, Col, Container } from 'react-bootstrap';
-import Layout from './shared/layout';
+import Layout from './shared/Layout';
 
 const Home = (props) => {
     const [projects,setProjects] = useState([]);
@@ -26,9 +26,9 @@ const Home = (props) => {
                 <Container>
                     <Row className="showcase">
                          {projects.map(project => <Col>
-                            <Card className="d" style="width: 18rem;">
+                            <Card>
                                 <Card.Body >
-                                    <Card.Title><Link to="{`/projects/${projects.id}`}">{project.title}</Link></Card.Title>
+                                    <Card.Title><Link to={`/projects/${projects.id}`}>{project.title}</Link></Card.Title>
                                     <Card.Subtitle>{project.authors}</Card.Subtitle>
                                     <Card.Text>{project.abstract}</Card.Text>
                                     <Card.Footer>{project.tags}</Card.Footer>
