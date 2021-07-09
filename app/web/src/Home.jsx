@@ -25,7 +25,7 @@ const Home = (props) => {
 
                 <CardGroup className="showcase">
 
-                    {projects.reverse().slice(0, 4).map(project =>
+                    {projects.slice(0,4).map(project =>
                         <Card key={project.id}>
                             <Card.Body >
                                 <Card.Title><Link to={`/projects/${projects.id}`}>{project.title}</Link></Card.Title>
@@ -37,8 +37,6 @@ const Home = (props) => {
                     )}
 
                 </CardGroup> <br /><br />
-
-
             </Container>
         </Layout>
     )
