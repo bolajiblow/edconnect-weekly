@@ -42,11 +42,11 @@ const Login = (props) => {
           .then(response => response.json())
           .then ((response) => {
               if (response.status === "ok") {
-                  document.cookie = `uid=${response.data.id}; domain=; path=/ `; // I am to store the id in a cookie named uid.
-                  history.push("/"); // redirect user to home page
+                  document.cookie = `uid=${response.data.id}; domain=; path=/ `; 
+                  history.push("/"); 
               } else if (response.status !== "ok") {
                     setAlertBlock(true);
-                    setAlerts("Invalid email/password"); // Supposed to print error message.
+                    setAlerts("Invalid email/password"); 
               }
           })
     }

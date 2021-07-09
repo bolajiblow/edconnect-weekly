@@ -4,7 +4,7 @@ import { Navbar, Nav, FormLabel, FormControl, Button, Form } from 'react-bootstr
 
 const Header = () => {
     const [username, setUsername] = useState('');
-    const [biscuit, setBiscuit] = useState(false);
+    const [blow, setBlow] = useState(false);
     let history = useHistory();
 
     if (document.cookie) {
@@ -27,7 +27,7 @@ const Header = () => {
                 .then(res => res.json())
                 .then(function(response) {
                     setUsername(`Hi ${response.firstname}`);
-                    setBiscuit(true);
+                    setBlow(true);
                 })
         }
     }
@@ -39,7 +39,6 @@ const Header = () => {
     }
 
     return (
-        <>
             <Navbar bg="primary" expand="lg">
                 <Navbar.Brand href="/">Project Explorer</Navbar.Brand>
                 <Navbar.Collapse>
@@ -52,7 +51,7 @@ const Header = () => {
                         <Nav.Link href="/projects/submit">Projects</Nav.Link>
                     </Nav>
                     <Nav>
-                        {biscuit ? (
+                        {blow ? (
                         <>
                             <Nav.Link href="#" id="logout" onClick={HandleLogout}>Logout</Nav.Link>
                             <Navbar.Text id="username">{username}</Navbar.Text>
@@ -65,7 +64,6 @@ const Header = () => {
                 
                 </Navbar.Collapse>
             </Navbar>
-        </>
     )
 }
 
