@@ -19,20 +19,19 @@ const Project = () => {
         fetch(`/api/projects/${id}`)
           .then(res => res.json())
           .then((result) => {
-              console.log(result)
               setProjectName(result.name);
               setAbstract(result.abstract);
               setAuthors(result.authors);
               setTags(result.tags);
-            
-                fetch(`/api/users/${result.createdBy}`)
-                    .then(res => res.json())
-                    .then((res) => {
-                        setAuthor(res.firstname + ' ' + res.lastname);
-                    }
-                    )
-        }
-        )
+                
+        fetch(`/api/users/${result.createdBy}`)
+            .then(res => res.json())
+            .then((res) => {
+                setAuthor(res.firstname + ' ' + res.lastname);
+            }
+            )
+    }
+    )
     }, [id])
 
     return (
