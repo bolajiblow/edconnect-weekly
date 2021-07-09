@@ -39,31 +39,33 @@ const Header = () => {
     }
 
     return (
-        <Navbar bg="primary" expand="lg">
-            <Navbar.Brand href="/">Project Explorer</Navbar.Brand>
-            <Navbar.Collapse>
-                <Form inline name="searchForm">
-                    <FormLabel className="sr-only" for="searchForm">Search Projects:</FormLabel>
-                    <FormControl type="text" className="form-control" name="searchForm" placeholder="Search Projects"/>
-                        <Button type="submit" variant="outline-light">Search</Button>
-                </Form>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/projects/submit">Projects</Nav.Link>
-                </Nav>
-                <Nav>
-                    {biscuit ? (
-                    <>
-                        <Nav.Link href="#" id="logout" onClick={HandleLogout}>Logout</Nav.Link>
-                        <Navbar.Text id="username">{username}</Navbar.Text>
-                    </>) :
-                    (<>
-                        <Nav.Link href="/signup" id="login">Sign Up</Nav.Link>
-                        <Nav.Link href="/login" id="login">Login</Nav.Link>
-                    </>)}
-                </Nav>
-               
-            </Navbar.Collapse>
-        </Navbar>
+        <>
+            <Navbar bg="primary" expand="lg">
+                <Navbar.Brand href="/">Project Explorer</Navbar.Brand>
+                <Navbar.Collapse>
+                    <Form inline name="searchForm">
+                        <FormLabel className="sr-only" for="searchForm">Search Projects:</FormLabel>
+                        <FormControl type="text" className="form-control" name="searchForm" placeholder="Search Projects"/>
+                            <Button type="submit" variant="outline-light">Search</Button>
+                    </Form>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/projects/submit">Projects</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        {biscuit ? (
+                        <>
+                            <Nav.Link href="#" id="logout" onClick={HandleLogout}>Logout</Nav.Link>
+                            <Navbar.Text id="username">{username}</Navbar.Text>
+                        </>) :
+                        (<>
+                            <Nav.Link href="/signup" id="login">Sign Up</Nav.Link>
+                            <Nav.Link href="/login" id="login">Login</Nav.Link>
+                        </>)}
+                    </Nav>
+                
+                </Navbar.Collapse>
+            </Navbar>
+        </>
     )
 }
 
