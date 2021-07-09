@@ -24,8 +24,7 @@ const Home = (props) => {
                 </Jumbotron>
 
                 <CardGroup className="showcase">
-
-                    {projects.slice(0,4).map(project =>
+                    {projects.map(project =>
                         <Card key={project.id}>
                             <Card.Body >
                                 <Card.Title><Link to={`/projects/${projects.id}`}>{project.title}</Link></Card.Title>
