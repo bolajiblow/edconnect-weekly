@@ -1,43 +1,47 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
+import { Jumbotron, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Button, Jumbotron, Card, Container, CardGroup } from 'react-bootstrap';
 import Layout from './shared/Layout';
 
 const Home = (props) => {
     const [projects, setProjects] = useState([]);
     useEffect(() => {
         fetch("api/projects")
-            .then(res => res.json())
-            .then(res => {
-                setProjects(res.slice(0, 4))
-            })
-    }, [])
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setProjects(result.slice(0,4));
+            }
+          )
+      }, [])
     return (
         <Layout>
-            <Container>
-                <Jumbotron className="mt-4">
-                    <h1>Welcome to Project Explorer</h1>
-                    <p>Project Explorer ia a repository for final year project across all departments at your institution. You can submit your project and search projects submitted by others to learn from</p>
-                    <Button variant="primary" href="./Signup" >Get started</Button>
-                    <Button variant="secondary" href="./Login" >Login</Button>
-                </Jumbotron>
+            <main className="mx-auto">
+                <Jumbotron> <br/>
+                    <h1>Project Explorer</h1>
+                    <p>Project Explorer is a repository for final year projects across all departments at your institution. You can submit your project and search projects submitted by others to learn from.</p>
+                    <Button variant="primary" href="/signup" className="mr-2">Get Started</Button>
+                    <Button variant="secondary" href="/login">Login</Button>
+                </Jumbotron> 
 
-                <CardGroup className="showcase">
-                    {projects.map(project =>
-                        <Card key={project.id}>
-                            <Card.Body >
-                                <Card.Title><Link to={`/projects/${projects.id}`}>{project.title}</Link></Card.Title>
-                                <Card.Subtitle>{project.authors}</Card.Subtitle>
-                                <Card.Text>{project.abstract.substring(0, 100)}...</Card.Text>
-                                <Card.Footer>{project.tags}</Card.Footer>
-                            </Card.Body>
-                        </Card>
-                    )}
-
-                </CardGroup> <br /><br />
-            </Container>
+                <Container>
+                    <Row className="showcase justify-content-between">
+                        {projects.map(project => <Col>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title><Link to={`/projects/${project.id}`}>{project.name}</Link></Card.Title>
+                                    <Card.Subtitle>{project.authors}</Card.Subtitle>
+                                    <Card.Text>{project.abstract}</Card.Text>
+                                    <Card.Footer>{project.tags}</Card.Footer>
+                                </Card.Body>
+                            </Card>
+                        </Col>)}
+                    </Row>
+                </Container><br/><br/>
+            </main>
         </Layout>
     )
 }
+
 export default Home;
